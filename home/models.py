@@ -56,11 +56,20 @@ class RecordedParkingLot(models.Model):
 
 class CarPark(models.Model):
     carParkName = models.CharField(max_length = 200)
-    carParkAddress = models.CharField(max_length = 200)
-    category = models.CharField(max_length = 50)
-    carParkCapacity = models.IntegerField() #Not in the API though
+    category = models.CharField(max_length = 200)
+    weekDaysRate1 = models.CharField(max_length = 200)
+    weekDaysRate2 = models.CharField(max_length = 200)
+    satRate = models.CharField(max_length = 200)
+    sunRate = models.CharField(max_length = 200)
+    carParkType = models.CharField(max_length = 200)
+    parkingSystem = models.CharField(max_length = 200)
+    freeParking = models.CharField(max_length = 200)
+    nightParking = models.CharField(max_length = 200)
     lat = models.FloatField()
     lng = models.FloatField()
+
+    def __str__(self):
+        return self.carParkName
 
 class BookmarkedCarPark(CarPark):
     user = models.ForeignKey('User', on_delete = models.CASCADE)

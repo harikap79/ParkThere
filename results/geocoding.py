@@ -10,8 +10,13 @@ def getGeoCode(address):
     requesteddata = requests.get('https://maps.googleapis.com/maps/api/geocode/json?address={}&key=AIzaSyCZFz2PlrkMfumZIKyCJlA7NS4MDRNFGhk'.format(address))
     soup = str(BeautifulSoup(requesteddata.content, 'html.parser'))
     soupdict = json.loads(soup)
-    lat = soupdict['results'][0]['geometry']['location']['lat']
-    lng = soupdict['results'][0]['geometry']['location']['lng']
+    try:
+    	lat = soupdict['results'][0]['geometry']['location']['lat']
+    	lng = soupdict['results'][0]['geometry']['location']['lng']
+    except:
+    	print(soupdict)
+    	print(address)
+    	return 0, 0
     return lat, lng
 
 def deleteslashes(address):
