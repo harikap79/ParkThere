@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.template import loader
 from django.shortcuts import render
 
 from home.forms import RegistrationForm
@@ -26,3 +27,11 @@ def post(self, request): #or this
 
         return redirect('home:home')
     return render(request, self.template_name)
+def index(request):
+    ten_history=SearchHistory.objects.all(user=self.User).order_by('-dateTime')
+    template = loader.get_template('searchHistory/searchHistory.html')
+    #html=''
+    #for record in ten_history:
+    #   url = '/history/'+str(record.id)+'/'
+    #    html += '<a href="' + url + '">' + record.carParkName + '</a><br>'
+    return HttpResponse(template.render(context,request))
