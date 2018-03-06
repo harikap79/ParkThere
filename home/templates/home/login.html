@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<div class = 'loginform' style = 'text-align: center'>
+<p><b> Enter your credentials </b></p>
+<form method = "post">
+ {% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+      <div class="form-group">
+        <label style = "text-align:center" for="{{ field.id_for_label }}">{{ field.label }}: </label><br>
+        {{ field |append_attr:"style:text-align:center;"}}
+        {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+<button type = "submit" class = "btn" style = "background-color: #0a448d; color: #FFF;">Login</button>
+</form>
+</div>
+ {% endblock %}

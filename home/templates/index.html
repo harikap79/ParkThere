@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block body %}
+  <div style = "text-align: center; margin-top: 30px">
+  {% if not user.is_authenticated %}
+    <p>Log in or sign up to access more features such as bookmarking carparks</p>
+      <a class = "btn" href = "{% url 'signup' %}" role = "button" style = "background-color: #1a4993; color: #FFF">Sign up</a>
+      <p> Or </p>
+      <a class = "btn" href = "{% url 'login' %}" role = "button" style = "background-color: #1a4993; color: #FFF">Log in</a>   
+  {% endif %}
+  <p></p>
+       <p>What would you like to do?</p>
+       <a class = "btn btn-primary" href = "{% url 'search' %}" role = "button">Find nearby Carparks</a>
+       <p></p>
+       <a class = "btn btn-primary" href = "#" role = "button">Compare Carparks</a>
+  </div>
+  {% endblock %}
