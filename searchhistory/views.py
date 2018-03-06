@@ -9,8 +9,6 @@ from home.models import SearchHistory
 
 template_name='home/home.html'#have no idea what this does
 
-def searchHistory(request)  :
-    return render(request, 'searchhistory/searchhistory.html')
 
 def get(self,request): #or this
     form = RegistrationForm()
@@ -27,8 +25,10 @@ def post(self, request): #or this
 
         return redirect('home:home')
     return render(request, self.template_name)
+
+
 def index(request):
-    ten_history=SearchHistory.objects.all(user=self.User).order_by('-dateTime')
+    ten_history=SearchHistory.objects.all(user=self.User).order_by('-dateTime')#order search results in reverse and take last ten
     template = loader.get_template('searchHistory/searchHistory.html')
     #html=''
     #for record in ten_history:
