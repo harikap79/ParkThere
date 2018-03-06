@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from home.forms import RegistrationForm
-from home.models import CarPark,SearchHistory,User
+from home.models import SearchHistory
 
 template_name='home/home.html'#have no idea what this does
 
@@ -13,9 +13,7 @@ def searchHistory(request)  :
 
 def get(self,request): #or this
     form = RegistrationForm()
-    carPark=CarPark.objects.all()
-    searchHistory=SearchHistory.objects.all()
-    user=User.objects.all()
+    searchHistory = SearchHistory.objects.all(user=self.User).order_by('-dateTime')[:10]#last ten by this user
 
     return render(request, self.template_name)
 
