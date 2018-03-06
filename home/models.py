@@ -68,7 +68,7 @@ class BookmarkedCarPark(CarPark):
 
 class SearchHistory(CarPark):
     user = models.ForeignKey('User', on_delete = models.CASCADE)
-    dateTime = models.DateTimeField()
+    dateTime = models.DateTimeField(auto_now=True)#date object created, not updated
     carPark = CarPark
 
 
