@@ -1,5 +1,5 @@
 import geocoding
-import hdbapi
+import DataGovAPI
 
 
 if __name__ == "__main__":
@@ -13,11 +13,11 @@ if __name__ == "__main__":
     django.setup()
     from django.db import models
     from home.models import CarPark
-    carparks = hdbapi.getHDBCarparks()
+    carparks = DataGovAPI.getCarParks()
     for key in carparks:
-        geocode = geocoding.getGeoCode(key['address'])
-        print(key['car_park_type'])
-        c = CarPark.objects.create(carParkName = key['address'], category = 'null', weekDaysRate1 = 'null', weekDaysRate2 = 'null', satRate = 'null',
-                                      sunRate = 'null', carParkType = key['car_park_type'], parkingSystem = key['type_of_parking_system'], freeParking = key['free_parking'],
-                                      nightParking = key['night_parking'], lat = geocode[0], lng = geocode[1])
+        geocode = geocoding.getGeoCode(key['carpark'])
+        print(key['carpark'])
+        c = CarPark.objects.create(carParkName = key['carpark'], category = key['category'], weekDaysRate1 = key['weekdays_rate1'], weekDaysRate2 = key['weekdays_rate2'], satRate = key['saturday_rate'],
+                                      sunRate = key['sunday_public_holiday_rate'], carParkType = 'null', parkingSystem = 'null', freeParking = 'null',
+                                      nightParking = 'null', lat = geocode[0], lng = geocode[1])
         c.save()
