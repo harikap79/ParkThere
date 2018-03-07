@@ -27,7 +27,7 @@ def post(self, request): #or this
     return render(request, self.template_name)
 
 
-def index(request):
+def searchHistory(request):
     ten_history=SearchHistory.objects.all(user=self.User).order_by('-dateTime')#order search results in reverse and take last ten
     template = loader.get_template('searchHistory/searchHistory.html')
     #html=''
