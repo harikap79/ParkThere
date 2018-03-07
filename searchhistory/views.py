@@ -27,9 +27,9 @@ def post(self, request):
 
 
 def searchHistory(request):
-    rev_history=SearchHistory.objects.all().order_by('-dateTime')[:10]#order search results in reverse, last ten
+    rev_history=SearchHistory.objects.filter(user = request.user).order_by('-dateTime')[:10]#order search results in reverse, last ten
     #html=''
     #for record in ten_history:
     #   url = '/history/'+str(record.id)+'/'
     #    html += '<a href="' + url + '">' + record.carParkName + '</a><br>'
-    return render(request, 'searchHistory/searchHistory.html')
+    return render(request, 'searchHistory/searchHistory.html', {'revhistory' : rev_history})
