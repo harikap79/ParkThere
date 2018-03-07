@@ -5,8 +5,10 @@ from django.http import HttpResponse
 
 
 def saveParkingLot(request):
+    print('debug save')
     return render(request, 'saveparkinglot/saveparkinglot.html')
 
 def savedParkingLot(request):
-	return render(request, 'saveparkinglot/savedparkinglot.html')
+    print('debug saved')
+    return render(request, 'saveparkinglot/savedparkinglot.html')
 # Create your views here.
