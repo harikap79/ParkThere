@@ -1,5 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+<div style = 'text-align: center'>
 <p> This is the compare page </p>
+<p> These are the available car parks.</p>
+{% for park in allParks %}
+<li><a href="/#/">{{park.carParkName}} weekdays rate:$ {{park.weekDaysRate1}}</a></li>
+{% endfor %}
 {% endblock %}
