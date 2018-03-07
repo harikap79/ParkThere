@@ -3,7 +3,7 @@
 {% block body %}
 <div style = 'text-align: center'>
 <p> This page shows the user's search history </p>
-{% for record in ten_history %}
+{% for record in history %}
 <li><a href="/searchHistory/{{record.id}}/">{{record.carParkName}}</a></li>
 {% endfor %}
 </div>

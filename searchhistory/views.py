@@ -5,33 +5,31 @@ from django.template import loader
 from django.shortcuts import render
 
 from home.forms import RegistrationForm
-from home.models import SearchHistory
-
-template_name='home/home.html'#have no idea what this does
+from home.models import SearchHistory, User
 
 
-def get(self,request): #or this
-    form = RegistrationForm()
-    searchHistory = SearchHistory.objects.all(user=self.User).order_by('-dateTime')[:10]#last ten by this user
 
-    return render(request, self.template_name)
+def get(self,request): 
+#   form = RegistrationForm()
+#    searchHistory = SearchHistory.objects.all(user=self.User).order_by('-dateTime')[:10]#last ten by this user
 
-def post(self, request): #or this
-    form = RegistrationForm(request.CarPark)
-    if form.is_valid():
-        searchHistory=form.save(commit=False)
-        searchHistory.user=request.user
-        post.save()
+   return render(request, 'searchHistory/searchHistory.html')
 
-        return redirect('home:home')
-    return render(request, self.template_name)
+def post(self, request): 
+#    form = RegistrationForm(request.CarPark)
+#    if form.is_valid():
+#        searchHistory=form.save(commit=False)
+#        searchHistory.user=request.user
+#        post.save()
+
+#        return redirect('home:home')
+    return render(request, 'searchHistory/searchHistory.html')
 
 
 def searchHistory(request):
-    ten_history=SearchHistory.objects.all(user=self.User).order_by('-dateTime')#order search results in reverse and take last ten
-    template = loader.get_template('searchHistory/searchHistory.html')
+    rev_history=SearchHistory.objects.all().order_by('-dateTime')[:10]#order search results in reverse, last ten
     #html=''
     #for record in ten_history:
     #   url = '/history/'+str(record.id)+'/'
     #    html += '<a href="' + url + '">' + record.carParkName + '</a><br>'
-    return HttpResponse(template.render(context,request))
+    return render(request, 'searchHistory/searchHistory.html')
