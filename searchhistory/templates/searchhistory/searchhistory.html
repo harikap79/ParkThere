@@ -63,7 +63,7 @@ function myFunction(name) {
 
 {% for record in revhistory %}
 <!--<li><a href="/searchHistory/{{record.id}}/">{{record.carParkName}} accessed on {{record.dateTime}}</a></li>-->
-<button class="myButton" onclick="myFunction()"><span style="font-size:100%;">{{record.carParkName}}</span> <span style="float:right;font-size:80%;">last accessed: {{record.dateTime}}</span></button><br/>
+<button class="myButton" onclick="myFunction()"><span style="font-size:100%;">{{record.carPark.carParkName}}</span> <span style="float:right;font-size:80%;">last accessed: {{record.dateTime}}</span></button><br/>
 {% endfor %}
 </div>
 </body>

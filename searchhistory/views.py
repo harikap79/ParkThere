@@ -5,7 +5,7 @@ from django.template import loader
 from django.shortcuts import render
 
 from home.forms import RegistrationForm
-from home.models import SearchHistory, User, CarPark
+from home.models import User, CarPark, SearchHistory
 
 
 
