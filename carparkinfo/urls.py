@@ -5,7 +5,7 @@ from home.models import CarPark
 
 urlpatterns = [
 #	url('', views.index, name = 'index'),
-	url(r'^(?P<id>[\d]+)/$', views.carParkInfo, name = "info"),
+	url(r'^(?P<id>[\d]+)/$', views.CarParkInfoController, name = "info"),
 
 
 ]

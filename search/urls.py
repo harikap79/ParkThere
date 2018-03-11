@@ -4,6 +4,6 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 #	url('', views.index, name = 'index'),
-	url('', views.search, name = 'search')
+	url('', views.SearchController, name = 'search')
 
 ]

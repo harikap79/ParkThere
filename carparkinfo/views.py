@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from home.models import CarPark
 
 
-def carParkInfo(request, id):
+def CarParkInfoController(request, id):
 	carpark = get_object_or_404(CarPark, id=id)
-	return render(request, 'carparkinfo/info.html', {'carpark' : carpark})
+	return render(request, 'carparkinfo/CarParkInfoUI.html', {'carpark' : carpark})
 # Create your views here.

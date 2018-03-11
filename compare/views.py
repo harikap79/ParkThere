@@ -5,6 +5,6 @@ from django.http import HttpResponse
 from home.models import CarPark
 
 
-def compare(request):
+def CompareController(request):
     allParks=CarPark.objects.all()
-    return render(request, 'compare/compare.html',{'allParks' : allParks})
+    return render(request, 'compare/CompareUI.html',{'allParks' : allParks})

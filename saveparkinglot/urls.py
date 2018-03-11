@@ -4,8 +4,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 #	url('', views.index, name = 'index'),
-	url(r'^$', views.saveParkingLot, name = 'saveParkingLot'),
-        url('saved/', views.savedParkingLot, name = 'savedParkingLot')
+	url(r'^$', views.SaveParkingLotController, name = 'saveParkingLot'),
+        url('saved/', views.SavedParkingLotController, name = 'savedParkingLot')
 	
 
 ]

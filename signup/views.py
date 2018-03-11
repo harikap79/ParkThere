@@ -4,7 +4,7 @@ from home.forms import RegistrationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-def signup(request):
+def SignUpController(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -16,5 +16,5 @@ def signup(request):
             return redirect('/')
     else:
         form = RegistrationForm()
-    return render(request, 'signup/signup.html', {'form': form})
+    return render(request, 'signup/SignUpUI.html', {'form': form})
 # Create your views here.

@@ -8,7 +8,7 @@ from home.models import CarPark
 from geopy.distance import vincenty
 from . import geocoding
 
-def results(request):
+def ResultsController(request):
     if request.method == 'POST':
         userinput = str(request.POST['pac-input'])
         usergeocode = geocoding.getGeoCode(userinput)
@@ -32,7 +32,7 @@ def results(request):
         		else:
         			break
         results = zip(results, distances)
-        return render(request, 'results/results.html', {'result' : results})
+        return render(request, 'results/ResultsUI.html', {'result' : results})
 
 
     else:

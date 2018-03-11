@@ -4,11 +4,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 
-def saveParkingLot(request):
+def SaveParkingLotController(request):
     print('debug save')
-    return render(request, 'saveparkinglot/saveparkinglot.html')
+    return render(request, 'saveparkinglot/SaveParkingLotUI.html')
 
-def savedParkingLot(request):
+def SavedParkingLotController(request):
     print('debug saved')
-    return render(request, 'saveparkinglot/savedparkinglot.html')
+    return render(request, 'saveparkinglot/SavedParkingLotUI.html')
 # Create your views here.

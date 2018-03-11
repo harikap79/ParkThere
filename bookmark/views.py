@@ -3,5 +3,5 @@ from home.forms import RegistrationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-def bookmark(request):
-    return render(request, 'bookmark/bookmark.html')
+def BookmarkedCarParkController(request):
+    return render(request, 'bookmark/BookmarkedCarParkUI.html')

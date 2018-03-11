@@ -4,5 +4,5 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 #	url('', views.index, name = 'index'),
-	url('', views.results, name = 'results')
+	url('', views.ResultsController, name = 'results')
 ]

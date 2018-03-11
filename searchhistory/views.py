@@ -13,7 +13,7 @@ def get(self,request):
 #   form = RegistrationForm()
 #    searchHistory = SearchHistory.objects.all(user=self.User).order_by('-dateTime')[:10]#last ten by this user
 
-   return render(request, 'searchHistory/searchHistory.html')
+   return render(request, 'searchHistory/SearchHistoryUI.html')
 
 def post(self, request): 
 #    form = RegistrationForm(request.CarPark)
@@ -23,10 +23,10 @@ def post(self, request):
 #        post.save()
 
 #        return redirect('home:home')
-    return render(request, 'searchHistory/searchHistory.html')
+    return render(request, 'searchHistory/SearchHistoryUI.html')
 
 
-def searchHistory(request):
+def SearchHistoryController(request):
     rev_history=SearchHistory.objects.filter(user = request.user).order_by('-dateTime')[:10]#order search results in reverse, last ten
     #html=''
     #for record in ten_history:
@@ -34,4 +34,4 @@ def searchHistory(request):
     #    html += '<a href="' + url + '">' + record.carParkName + '</a><br>'
 
 
-    return render(request, 'searchHistory/searchHistory.html', {'revhistory' : rev_history})
+    return render(request, 'searchHistory/SearchHistoryUI.html', {'revhistory' : rev_history})
