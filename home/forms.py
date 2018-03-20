@@ -21,3 +21,10 @@ class RegistrationForm(UserCreationForm):
 			user.save()
 
 		return user
+
+class SaveLotForm(forms.Form):
+        print('debug save lot form')
+        carpark_name= forms.CharField(label='CarPark Name')
+        carpark_level= forms.CharField(label='CarPark Level')
+        carpark_zone= forms.CharField(label='CarPark Zone')
+        carpark_lot= forms.CharField(label='CarPark Lot Number')
