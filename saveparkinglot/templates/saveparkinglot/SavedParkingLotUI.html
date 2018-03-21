@@ -1,8 +1,63 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+<head>
+<style>
+.left-column
+{
+    text-align: right;
+    
+}
+.right-column
+{
+	text-align:left;
+	padding-left:4px;
+    font-weight: bold;
+}
+</style>
+</head>
 <div style = 'text-align: center'>
-<p> This page shows the saved parking lots </p>
+<h3> Last Saved Parking Lot </h2>
+{% if rechistory|length > 0 %}
+	{% for record in rechistory %}<!--
+	<p><span style = 'text-align: left; color:red'>Carpark Name: </span><span style 'text-align: right'><b>{{record.carParkName}}</b></span></p>
+	<p><span style = 'text-align: right'>Carpark Level: </span><span style 'text-align: left'><b>{{record.carParkLevel}}</b></span></p>
+	<p><span style = 'text-align: right'>Carpark Zone: </span><span style 'text-align: left'><b>{{record.carParkZone}}</b></span></p>
+	<p><span style = 'text-align: right'>Carpark Lot Number: </span><span style 'text-align: left'><b>{{record.carParkLot}}</b></span></p>
+	<p><span style = 'text-align: right'>Date and Time: </span><span style 'text-align: left'><b>{{record.dateTime}}</b></span></p>
+	-->
+	<table width = 100%>
+                <tr>
+                    <td class="left-column" width=50%>
+                        Carpark Name:
+                    </td><td class="right-column">
+                        {{record.carParkName}}
+                    </td></tr><tr>
+                    <td class="left-column">
+                        Carpark Level:
+                    </td><td class="right-column">
+                        {{record.carParkLevel}} 
+                    </td> </tr><tr>
+                    <td class="left-column">
+                        Carpark Zone:
+                    </td><td class="right-column">
+                        {{record.carParkZone}}
+                    </td></tr><tr>
+                    <td class="left-column">
+                        Carpark Lot Number:
+                    </td><td class="right-column">
+                       {{record.carParkLot}}
+                    </td></tr><tr>
+                    <td class="left-column">
+                        Date and Time:
+                    </td><td class="right-column">
+						{{record.dateTime}}
+					</td></tr>					
+    		</table>
+	{% endfor %}
+{% else %}
+	<p><b>You have no saved Parking Lot to display. </b></p>
+{% endif %}
 </div>
 
 {% endblock %}

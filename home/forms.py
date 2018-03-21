@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from home.models import User
+from home.models import User, RecordedParkingLot
 from django import forms
 
 class RegistrationForm(UserCreationForm):
@@ -22,9 +22,28 @@ class RegistrationForm(UserCreationForm):
 
 		return user
 
-class SaveLotForm(forms.Form):
-        print('debug save lot form')
-        carpark_name= forms.CharField(label='CarPark Name')
-        carpark_level= forms.CharField(label='CarPark Level')
-        carpark_zone= forms.CharField(label='CarPark Zone')
-        carpark_lot= forms.CharField(label='CarPark Lot Number')
+class SaveLotForm(forms.ModelForm):
+        
+        class Meta:
+                model = RecordedParkingLot
+                fields = ('carParkName','carParkLot','carParkLevel','carParkZone')
+                
+        def __init__(self, *args, **kwargs):
+                super(forms.ModelForm, self).__init__(*args, **kwargs)
+                
+        def save(self, commit = True):
+                print('debug save lot form')
+                print('debug commit 1 = '+str(commit))
+                cpl = super(forms.ModelForm, self).save(commit=False)
+                cpl.carParkName= self.cleaned_data['carParkName']
+                cpl.carParkLevel= self.cleaned_data['carParkLevel']
+                cpl.carParkZone= self.cleaned_data['carParkZone']
+                cpl.carParkLot= self.cleaned_data['carParkLot']
+                print('debug commit 2 = '+str(commit))
+                if commit:
+                        cpl.user = self.user
+                        cpl.save()
+                        print('debug form saved')
+                        print('debug carpark name: '+cpl.carParkName)
+                        print('debug user name: '+cpl.user.email)
+                return cpl

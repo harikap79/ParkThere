@@ -51,7 +51,7 @@ class RecordedParkingLot(models.Model):
     carParkLot = models.CharField(max_length = 50)
     carParkLevel = models.CharField(max_length = 50)
     carParkZone = models.CharField(max_length = 50)
-    dateTime = models.DateTimeField()
+    dateTime = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('User', on_delete = models.CASCADE)
 
 class CarPark(models.Model):

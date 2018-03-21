@@ -2,6 +2,7 @@ from django.contrib.auth import login, authenticate
 from home.forms import SaveLotForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from home.models import RecordedParkingLot
 
 
 def SaveParkingLotController(request):
@@ -12,12 +13,15 @@ def SaveParkingLotController(request):
         form=SaveLotForm(request.POST)
         if form.is_valid():
             print('debug valid form')
-            print('debug name: '+form.cleaned_data['carpark_name'])
-            print('debug level: '+form.cleaned_data['carpark_level'])
-            print('debug zone: '+form.cleaned_data['carpark_zone'])
-            print('debug lot: '+form.cleaned_data['carpark_lot'])
+            obj = form.save(commit=False)
+            print('debug stage 2')
+            obj.user = request.user
+            print('debug user: '+obj.user.email)
+            print('debug carpark: '+obj.carParkName)
+            obj.save()
+            print('debug stage 3')
             #return HttpResponseRedirect('/thanks/')
-            return render(request,'saveparkinglot/SavedParkingLotUI.html',)
+            return redirect('/saveparkinglot/saved/')
     else:
         form=SaveLotForm
 
@@ -26,7 +30,12 @@ def SaveParkingLotController(request):
 
 def SavedParkingLotController(request):
     print('debug saved')
-    return render(request, 'saveparkinglot/SavedParkingLotUI.html')
+    
+    rec_history= RecordedParkingLot.objects.filter(user = request.user).order_by('-dateTime')[:1]
+    #shows only last save
+    return render(request, 'saveparkinglot/SavedParkingLotUI.html',{'rechistory':rec_history})
+    
+        
 # Create your views here.
 '''def get_form(request):
     if request.method == 'POST':
