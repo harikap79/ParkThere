@@ -17,6 +17,7 @@ def CarParkInfoController(request, id):
                 saveHis.user=request.user
                 saveHis.carPark=carpark
                 saveHis.save()
+                print('debug save history user: '+saveHis.user.email+' carpark: '+saveHis.carPark.carParkName)
                 anon=0 #not anon
 
         if request.method == 'POST':

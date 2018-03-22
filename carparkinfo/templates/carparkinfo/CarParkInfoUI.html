@@ -129,10 +129,12 @@ function myFunction(name) {
     </table>
 	</br>
 	</br>
+	{% if anon < 1 %}
 	<form style='align:center' method="post">
 	{% csrf_token %}
 	<button class="button1" type="submit" onclick="myFunction()" >Bookmark</button>
 	</form>
+	{% endif %}
 </div>
 
 {% endblock %}

@@ -87,6 +87,7 @@ class SearchHistory(models.Model):
     user = models.ForeignKey('User', on_delete = models.CASCADE)
     dateTime = models.DateTimeField(auto_now=True)#date object created, not updated
     carPark = models.ForeignKey('CarPark', on_delete = models.CASCADE)
+
     def __str__(self):
         stringtoreturn = self.user.email
         stringtoreturn += ":"
