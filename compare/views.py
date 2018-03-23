@@ -17,10 +17,12 @@ def CompareController(request):
         
         searchResults=searchDB(request.POST.get('pac-input'))
         searchTerm=request.POST.get('pac-input')
-    
+        return render(request, 'compare/CompareUI.html',{'searchResults':searchResults, 'searchTerm': searchTerm})
+    else:
+    	return render(request, 'compare/CompareUI.html')
     #return render(request, 'search/SearchUI.html',{'searchResults' : searchResults})
 
-    return render(request, 'compare/CompareUI.html',{'searchResults':searchResults, 'searchTerm': searchTerm})
+
 
 
 def searchDB(searchTerm):
