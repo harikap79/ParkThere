@@ -31,8 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'discomp',
+    'comparison',
     'carparkinfo',
-	'home',	
+    'home',	
     'widget_tweaks',
     'searchhistory',
     'signup',

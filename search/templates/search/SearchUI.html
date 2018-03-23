@@ -93,9 +93,10 @@
 	<p style = "text-align: center;"><b>Please search for a location where you want to search for a nearby carpark. Click on Search when you are done.</b></p>
 	<form action = "{% url 'results' %}" method = "POST" style="width:100%; height:100%; text-align: center;" onkeypress="return event.keyCode != 13;">
 	{% csrf_token %}
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box" name = "pac-input">
+    <input id="pac-input" class="controls" type="text" placeholder="Search..." name = "pac-input">
+	<button type = "submit" class = "btn btn-primary">Search</button>
     <div id="map"></div>
-    <button type = "submit" class = "btn btn-primary">Search</button>
+    
 	</form>
 
 

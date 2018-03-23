@@ -8,17 +8,18 @@ from home.models import CarPark, SearchHistory,BookmarkedCarPark
 def CarParkInfoController(request, id):
         carpark = get_object_or_404(CarPark, id=id)
         anon=1
-        if request.user.is_anonymous:
-                print('debug anonymous user')
-                anon=1
-        else:
-                print('debug info user' + request.user.email)
-                saveHis = SearchHistory()
-                saveHis.user=request.user
-                saveHis.carPark=carpark
-                saveHis.save()
-                print('debug save history user: '+saveHis.user.email+' carpark: '+saveHis.carPark.carParkName)
-                anon=0 #not anon
+        if request.method !='POST':
+                if request.user.is_anonymous:
+                        print('debug anonymous user')
+                        anon=1
+                else:
+                        print('debug info user' + request.user.email)
+                        saveHis = SearchHistory()
+                        saveHis.user=request.user
+                        saveHis.carPark=carpark
+                        saveHis.save()
+                        print('debug save history user: '+saveHis.user.email+' carpark: '+saveHis.carPark.carParkName)
+                        anon=0 #not anon
 
         if request.method == 'POST':
                 print('debug bookmarking carpark '+str(carpark.id))

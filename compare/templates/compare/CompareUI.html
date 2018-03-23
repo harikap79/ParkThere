@@ -51,9 +51,10 @@
 }
 </style>
 <script>
-function myFunction(name) {
+function myFunction() {
 	
-    alert("You pressed the button!\n\nA link to the info page about this car park will be put here instead of this alert box");
+    alert("You pressed the button!\n\nThis carpark is selected\n");
+	location.href='/compare/'
 }
 </script></head>
 
@@ -74,8 +75,11 @@ function myFunction(name) {
 </div>
 <div style = 'text-align: center'>
 	{% for result in searchResults %}
-	<button class="myButton" onclick="location.href='/carparkinfo/{{result.id}}/'"><span style="font-size:100%;">{{result.carParkName}}</span> </button><br/>
-	<!--<span style="float:right;font-size:90%;">weekdays rate:$ {{result.weekDaysRate1}}</span>-->
+
+	<!-- first selection does nothing-->
+	<button class="myButton" onclick="location.href='/comparison/{{result.id}}/'"><span style="font-size:100%;">{{result.carParkName}}</span> </button><br/>
+	<!--<button class="myButton" onclick="location.href='/carparkinfo/{{result.id}}/'"><span style="font-size:100%;">{{result.carParkName}}</span> </button><br/>
+	<span style="float:right;font-size:90%;">weekdays rate:$ {{result.weekDaysRate1}}</span>-->
 	{% endfor %}
 </div>
 	{% endif %}
