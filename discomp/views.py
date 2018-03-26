@@ -24,7 +24,7 @@ def DisCompController(request):
 
 def searchDB(searchTerm):
     print('debug searchDB')
-    searchResults = CarPark.objects.get(Q(carParkName__icontains=searchTerm) | Q(id__contains=searchTerm))
+    searchResults = CarPark.objects.get(Q(id=searchTerm))
     #searchResults = CarPark.objects.filter(carParkName__icontains=searchTerm|id__contains=searchTerm)
     #for x in searchResults:
     #    print('debug result: '+x.carParkName)

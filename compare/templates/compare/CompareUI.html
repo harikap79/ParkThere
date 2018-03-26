@@ -69,6 +69,7 @@ function myFunction() {
     <button type = "submit" class = "btn btn-primary">Search</button>
 	</form>
 </div>
+	{% if startsearch == 1 %}
 	{% if searchResults %}
 	{% if searchResults|length > 0 %}
 	
@@ -87,6 +88,7 @@ function myFunction() {
 	{% endif %}
 	{% else %}
 	<p style = 'text-align: center'>No results found, please try again</p>
+	{% endif %}
 	{% endif %}
 
 	

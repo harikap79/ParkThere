@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
-
+<html>
+{% block style %}
+ 
+{% endblock %}
 {% block body %}
 <head>
 <style>
@@ -60,6 +63,15 @@
   text-align:center;
 
 }
+.content
+{
+
+  margin: auto;
+  text-align:center;
+  align:center;
+  width:60%; 
+  height:500px;
+}
 </style>
 <script>
 function myFunction(name) {
@@ -71,7 +83,7 @@ function myFunction(name) {
 }
 </script>
 </head>
-
+<body>
 <h3 style='text-align: center'> This is the carpark information page for <b>{{carpark}}</b> </h3>
 <div class='wrapper'>
 	<table style= 'width:100%'>
@@ -132,9 +144,37 @@ function myFunction(name) {
 	{% if anon < 1 %}
 	<form style='align:center' method="post">
 	{% csrf_token %}
-	<button class="button1" type="submit" onclick="myFunction()" >Bookmark</button>
+	<button class="button1" type="submit" onclick="myFunction()" >Bookmark</button><br/>
 	</form>
+	</div>
 	{% endif %}
-</div>
 
+<br/><br/><div id="map" class='content'></div><br/><br/><br/>
 {% endblock %}
+
+
+{% block script %}
+		<script>
+		function myMap() {
+		var myLatLng = {lat: {{carpark.lat}}, lng: {{carpark.lng}}};
+
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 17,
+			center: myLatLng
+		});
+
+		var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+			title: '{{carpark.carParkName}}'
+		});
+		}
+
+
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYBCyEhSH4PuNpdheSLpKENu0WyOgSui0&callback=myMap"></script>
+		 
+{% endblock %}
+
+</body>
+</html>

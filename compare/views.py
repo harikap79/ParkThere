@@ -11,15 +11,17 @@ def CompareController(request):
     
     searchResults = 0 #default value so later statement wont complain
     searchTerm = 0
+    startsearch=0
     if request.method == 'POST':
         print('debug compare search request made')
         print('debug '+request.POST.get('pac-input'))
         
         searchResults=searchDB(request.POST.get('pac-input'))
         searchTerm=request.POST.get('pac-input')
-        return render(request, 'compare/CompareUI.html',{'searchResults':searchResults, 'searchTerm': searchTerm})
+        startsearch=1
+        return render(request, 'compare/CompareUI.html',{'searchResults':searchResults, 'searchTerm': searchTerm,'startsearch':startsearch})
     else:
-    	return render(request, 'compare/CompareUI.html')
+    	return render(request, 'compare/CompareUI.html',{'startsearch':startsearch})
     #return render(request, 'search/SearchUI.html',{'searchResults' : searchResults})
 
 
