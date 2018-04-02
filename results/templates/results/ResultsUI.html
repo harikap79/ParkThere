@@ -1,62 +1,63 @@
 {% extends 'layout.html' %}
-
 {% block style %}
 th {
-	background-color: #0a448d;
-	color: white;
-	text-align: center;
+background-color: #0a448d;
+color: white;
+text-align: center;
 }
-
 th {
-	border-width: 1px;
-    border-color: #08346b;
-    border-style: solid;
-	text-align: center;
+border-width: 1px;
+border-color: #08346b;
+border-style: solid;
+text-align: center;
 }
 td{
-    border-width: 1px;
-    border-color: #cecece;
-    border-style: solid;
-	text-align: center;
+border-width: 1px;
+border-color: #cecece;
+border-style: solid;
+text-align: center;
 }
-
 .table tr:hover {
-	background-color: #d6d6d6;
-	cursor: pointer;
+background-color: #d6d6d6;
+cursor: pointer;
 }
 {% endblock %}
-
 {% block body %}
+{% if noresults > 0 %}
 <table class="table table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">Carpark</th>
-      <th scope="col">Distance</th>
-
-<!--       <th scope="col">Weekday Rate 1</th>
-      <th scope="col">Weekday Rate 2</th>
-      <th scope="col">Saturday Rate</th>
-      <th scope="col">Sunday/Public holiday Rate</th> -->
-    </tr>
-</thead>
-<tbody>
-	{% for x, y in result %}
-		<tr onclick="location.href='/carparkinfo/{{x.id}}/'">
-			<td>{{ x.carParkName }}</td>
-			<td>{{y}} km</td>
-<!-- 			{% if x.weekDaysRate1 == 'null' %}
-				<td>Currently not available</td>
-				<td>Currently not available</td>
-				<td>Currently not available</td>
-				<td>Currently not available</td>
-			{% else %}
-				<td>{{ x.weekDaysRate1 }}</td>
-				<td>{{ x.weekDaysRate2 }}</td>
-				<td>{{ x.satRate }}</td>
-				<td>{{ x.sunRate }}</td>
-			{% endif %} -->
-		</tr>
-	{% endfor %}
-</tbody>
+   <thead>
+      <tr>
+         <th scope="col">Carpark</th>
+         <th scope="col">Distance</th>
+         <!--       <th scope="col">Weekday Rate 1</th>
+            <th scope="col">Weekday Rate 2</th>
+            <th scope="col">Saturday Rate</th>
+            <th scope="col">Sunday/Public holiday Rate</th> -->
+      </tr>
+   </thead>
+   <tbody>
+      {% for x, y in result %}
+      <tr onclick="location.href='/carparkinfo/{{x.id}}/'">
+         <td>{{ x.carParkName }}</td>
+         <td>{{y}} km</td>
+         <!-- 			{% if x.weekDaysRate1 == 'null' %}
+            <td>Currently not available</td>
+            <td>Currently not available</td>
+            <td>Currently not available</td>
+            <td>Currently not available</td>
+            {% else %}
+            <td>{{ x.weekDaysRate1 }}</td>
+            <td>{{ x.weekDaysRate2 }}</td>
+            <td>{{ x.satRate }}</td>
+            <td>{{ x.sunRate }}</td>
+            {% endif %} -->
+      </tr>
+      {% endfor %}
+   </tbody>
 </table>
+{% else %}
+<div style = "text-align:center">
+   <p>Sorry, your search returned no results</p>
+   <a href = "{% url 'search' %}"><button class = "btn btn-primary">Go back to search</button></a>
+{% endif %}
 {% endblock %}

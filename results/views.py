@@ -31,8 +31,9 @@ def ResultsController(request):
         			results[y-1] = temp
         		else:
         			break
+        noresults = len(results)
         results = zip(results, distances)
-        return render(request, 'results/ResultsUI.html', {'result' : results})
+        return render(request, 'results/ResultsUI.html', {'result' : results, "noresults" : noresults})
 
 
     else:

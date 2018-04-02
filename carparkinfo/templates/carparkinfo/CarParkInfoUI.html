@@ -97,7 +97,9 @@ function myFunction2(name) {
                         Carpark Name:
                     </td><td class="right-column">
                         <b>{{carpark.carParkName}}</b>
-                    </td></tr><tr>
+                    </td></tr>
+                    {% if carpark.carParkType == "null" %}
+                    <tr>
                     <td class="left-column">
                         Category:
                     </td><td class="right-column">
@@ -122,7 +124,8 @@ function myFunction2(name) {
                         Sunday Rate:
                     </td><td class="right-column">
                        <b>{{carpark.sunRate}}</b>
-                    </td></tr><tr>
+                    </td>
+                    {% else %}</tr><tr>
 					<td class="left-column">
                         Carpark Type:
                     </td><td class="right-column">
@@ -143,6 +146,7 @@ function myFunction2(name) {
                     </td><td class="right-column">
                        <b>{{carpark.nightParking}}</b>
                     </td></tr>	
+                    {% endif %}
     </table>
 	</br>
 	</br>
