@@ -22,6 +22,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	path('', TemplateView.as_view(template_name = 'index.html'), name = 'index'),
+    path('navigate/', include('navigate.urls')),
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('login/', include('login.urls')),
