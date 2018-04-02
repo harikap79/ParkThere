@@ -33,6 +33,8 @@ urlpatterns = [
     path('searchhistory/', include('searchhistory.urls')),
     path('saveparkinglot/', include('saveparkinglot.urls')),
     url('logout/', auth_views.logout, name = 'logout'),
-    path('carparkinfo/', include('carparkinfo.urls'))
+    path('carparkinfo/', include('carparkinfo.urls')),
+    path('comparison/',include('comparison.urls')),
+    path('discomp/',include('discomp.urls'))
 
 ]

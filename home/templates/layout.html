@@ -64,14 +64,18 @@
       {% if user.is_authenticated %}
 					<li class = "active"><a href = "{% url 'index' %}">Home</a></li>
           <li><a href = "{% url 'logout' %}">Logout</a>
+					<li><a href = "{% url 'search' %}">Search</a></li>
+          <li><a href = "{% url 'compare' %}">Compare</a></li>
 					<li><a href = "{% url 'saveParkingLot' %}">Save a parking lot</a></li>
-          <li><a href = "{% url 'savedParkingLot' %}">Saved parking lots</a></li>
+          <li><a href = "{% url 'savedParkingLot' %}">Saved parking lot</a></li>
 					<li><a href = "{% url 'searchHistory' %}">Search history</a></li>
           <li><a href = "{% url 'bookmark' %}">Bookmarked Carparks</a></li>
       {% else %}
           <li class = "active"><a href = "{% url 'index' %}">Home</a></li>
           <li><a href = "{% url 'login' %}">Log in</a>
           <li><a href = "{% url 'signup' %}">Sign up</a>
+		  <li><a href = "{% url 'search' %}">Search</a></li>
+          <li><a href = "{% url 'compare' %}">Compare</a></li>
 				</ul>
 		</div>
     {% endif %}

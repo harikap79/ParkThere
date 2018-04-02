@@ -27,7 +27,7 @@ def post(self, request):
 
 
 def SearchHistoryController(request):
-    rev_history=SearchHistory.objects.filter(user = request.user).order_by('-dateTime')[:10]#order search results in reverse, last ten
+    rev_history=SearchHistory.objects.filter(user = request.user).order_by('-dateTime')[:15]#order search results in reverse, last ten
     #html=''
     #for record in ten_history:
     #   url = '/history/'+str(record.id)+'/'

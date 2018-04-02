@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<!DOCTYPE = html>
+<html>
+<head>
+<style type="text/css">
+.tg  {margin:0px auto;align:center;border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-cynk{font-weight:bold;font-size:14px;font-family:Tahoma, Geneva, sans-serif !important;;vertical-align:top}
+.tg .tg-uzd9{font-weight:bold;font-size:14px;font-family:Tahoma, Geneva, sans-serif !important;;vertical-align:top}
+.tg .tg-9hbo{font-weight:bold;font-size:14px;font-family:Tahoma, Geneva, sans-serif !important;;vertical-align:top}
+.tg .tg-b7b8{background-color:#f9f9f9;vertical-align:top}
+.tg .tg-yw4l{vertical-align:top}
+.content
+{
+  margin: auto;
+  text-align:center;
+  align:center;
+  width:60%; 
+  height:500px;
+}
+</style>
+
+</head>
+
+<body>
+<div style = 'text-align: center'>
+<h3>Comparison page</h3>
+<p>Selected car parks are <b>{{cp1.carParkName}}</b> and <b>{{cp2.carParkName}}</b></p>
+</div>
+<div style='align:center'>
+<table class="tg" width='70%'>
+	<col width="20%" align='right'/>
+    <col width="40%" />
+    <col width="40%" />
+  <tr>
+    <th class="tg-cynk"align='right' ><b>Carparks</b></th>
+    <th class="tg-9hbo"><a href="/carparkinfo/{{cp1.id}}/" class="button">{{cp1.carParkName}}</a></th>
+    <th class="tg-uzd9"><a href="/carparkinfo/{{cp2.id}}/" class="button">{{cp2.carParkName}}</a></th>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"><b>Category</b></td>
+    <td class="tg-b7b8">{{cp1.category}}</td>
+    <td class="tg-b7b8">{{cp2.category}}</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><b>Weekdays Rate 1</b></td>
+    <td class="tg-yw4l">{{cp1.weekDaysRate1}}</td>
+    <td class="tg-yw4l">{{cp2.weekDaysRate1}}</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"><b>Weekdays Rate 2</b></td>
+    <td class="tg-b7b8">{{cp1.weekDaysRate2}}</td>
+    <td class="tg-b7b8">{{cp2.weekDaysRate2}}</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><b>Saturday Rate</b></td>
+    <td class="tg-yw4l">{{cp1.satRate}}</td>
+    <td class="tg-yw4l">{{cp2.satRate}}</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"><b>Sunday Rate</b></td>
+    <td class="tg-b7b8">{{cp1.sunRate}}</td>
+    <td class="tg-b7b8">{{cp2.sunRate}}</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><b>Car Park Type</b></td>
+    <td class="tg-yw4l">{{cp1.carParkType}}</td>
+    <td class="tg-yw4l">{{cp2.carParkType}}</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"><b>Parking System</b></td>
+    <td class="tg-b7b8">{{cp1.parkingSystem}}</td>
+    <td class="tg-b7b8">{{cp2.parkingSystem}}</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><b>Free Parking</b></td>
+    <td class="tg-yw4l">{{cp1.freeParking}}</td>
+    <td class="tg-yw4l">{{cp2.freeParking}}</td>
+  </tr>
+  <tr>
+    <td class="tg-b7b8"><b>Night Parking</b></td>
+    <td class="tg-b7b8">{{cp1.nightParking}}</td>
+    <td class="tg-b7b8">{{cp2.nightParking}}</td>
+  </tr>
+  <!--<tr>
+    <td class="tg-yw4l"><b></b></td>
+    <td class="tg-yw4l">{{cp1.}}</td>
+    <td class="tg-yw4l">{{cp2.}}</td>
+  </tr>-->
+</table>
+</div>
+
+<br/><br/><div id="map" class='content'></div><br/><br/><br/>
+{% endblock %}
+
+
+{% block script %}
+		<script>
+		function myMap2() {
+		var myLatLng1 = {lat: {{cp1.lat}}, lng: {{cp1.lng}}};
+		var myLatLng2 = {lat: {{cp2.lat}}, lng: {{cp2.lng}}};
+		var myLatLngavg = {lat:({{cp1.lat}}+{{cp2.lat}})/2 , lng:({{cp1.lng}}+{{cp2.lng}})/2};
+
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 13,
+			center: myLatLngavg
+		});
+
+		var marker = new google.maps.Marker({
+			position: myLatLng1,
+			map: map,
+			title: '{{cp1.carParkName}}'
+		});
+		var marker = new google.maps.Marker({
+			position: myLatLng2,
+			map: map,
+			title: '{{cp2.carParkName}}'
+		});
+		}
+
+
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYBCyEhSH4PuNpdheSLpKENu0WyOgSui0&callback=myMap2"></script>
+		 
+{% endblock %}
+</html>
+

@@ -51,8 +51,11 @@ class RecordedParkingLot(models.Model):
     carParkLot = models.CharField(max_length = 50)
     carParkLevel = models.CharField(max_length = 50)
     carParkZone = models.CharField(max_length = 50)
-    dateTime = models.DateTimeField()
+    dateTime = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('User', on_delete = models.CASCADE)
+
+    def __str__(self):
+        return self.carParkName
 
 class CarPark(models.Model):
     carParkName = models.CharField(max_length = 200)
@@ -67,6 +70,7 @@ class CarPark(models.Model):
     nightParking = models.CharField(max_length = 200)
     lat = models.FloatField()
     lng = models.FloatField()
+
 
     def __str__(self):
         return self.carParkName
@@ -84,6 +88,7 @@ class SearchHistory(models.Model):
     user = models.ForeignKey('User', on_delete = models.CASCADE)
     dateTime = models.DateTimeField(auto_now=True)#date object created, not updated
     carPark = models.ForeignKey('CarPark', on_delete = models.CASCADE)
+
     def __str__(self):
         stringtoreturn = self.user.email
         stringtoreturn += ":"

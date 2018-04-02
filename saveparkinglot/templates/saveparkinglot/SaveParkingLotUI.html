@@ -1,9 +1,14 @@
 {% extends 'layout.html' %}
-
+{% load widget_tweaks %}
 {% block body %}
 <div style = 'text-align: center'>
+<p>Enter Parking Lot Information to save Parking Lot.</p>
+<p>This will overwrite your last save.</p>
+<p>Click on Saved parking lots to view your last saved Lot</p>
+<!--
 <p> This page allows you to save a parking lot </p>
 <p></p>
+
 <p><b>Carpark name</b></p>
 <input name = 'name' type = 'text' placeholder = 'Enter the carpark name'>
 <p><b>Carpark level</b></p>
@@ -12,6 +17,38 @@
 <input name = 'zone' type = 'text' placeholder = 'Enter the carpark zone'>
 <p><b>Carpark lot</b></p>
 <input name = 'lot' type = 'text' placeholder = 'Enter the carpark lot'>
+-->
+<form method="post">
+{% csrf_token %}
+
+{% for field in form %}
+      <div class="form-group">
+        <label style = "text-align: center" for="{{ field.id_for_label }}">{{ field.label }}: </label><br>
+        {{ field |append_attr:"style:text-align:center;"}}
+        {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+<input type='submit' value='Save'>
+<!--
+	<p><b>
+    <label for="carpark_name">Carpark name: </label>
+    <input id="carpark_name" type="text" name="name_field" value="">
+	</p></b><p><b>
+	<label for="carpark_level">Carpark Level: </label>
+    <input id="carpark_level" type="text" name="name_field" value="">
+	</p></b><p><b>
+	<label for="carpark_zone">Carpark Zone: </label>
+    <input id="carpark_zone" type="text" name="name_field" value="">
+	</p></b><p><b>
+	<label for="carpark_lot">Carpark Lot: </label>
+    <input id="carpark_lot" type="text" name="name_field" value="">
+	</p></b><p><b>
+    <input type="submit" value="Save">
+	</p></b>
+-->
+</form>
 </div>
 
 {% endblock %}
