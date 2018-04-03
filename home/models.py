@@ -96,5 +96,17 @@ class SearchHistory(models.Model):
         return stringtoreturn
 
 
+class CarParkPrice(models.Model):
+    carPark = models.ForeignKey('CarPark', on_delete = models.CASCADE)
+    firsthour = models.FloatField()
+    subhalfhour = models.FloatField()
+    subfifteen = models.FloatField(default = 0)
+    subhour = models.FloatField(default = 0)
+    perentry = models.FloatField()
+    freeperiod = models.FloatField(default = 0)
+
+    def __str__(self):
+    	return self.carPark.carParkName
+
 
 # Create your models here.

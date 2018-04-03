@@ -21,14 +21,42 @@ text-align: center;
 background-color: #d6d6d6;
 cursor: pointer;
 }
+
+#sortbydist:hover {
+background-color: #1c355e;
+}
+
+#sortbyprice:hover {
+background-color: #1c355e;
+}
 {% endblock %}
 {% block body %}
+{% if pricesorted == 0 %}
+<div style = "text-align:center;" class = "row">
+   <form id = "sortPrice" action = "{% url 'results' %}" method = "POST" onsubmit = "return validate()">
+   {% csrf_token %}
+   <input type = "hidden" name = "pac-input" value = "{{userinput}}">
+   <p><b>Sort by price</b></p>
+   <p style = "display: inline-block;">Date</p>
+   <input id = "date" name = "date" type = "date" style = "display: inline-block;">
+   <p style = "display: inline-block;">From</p>
+   <input id = "starttime" type = "time" style = "display: inline-block;" name = "starttime" >
+   <p style = "display: inline-block;">To</p>
+   <input id = "endtime" type = "time" style = "display: inline-block;" name = "endtime" >
+   <button type = "submit" class = "btn btn-primary" style = "display: inline-block;">Sort</button>
+   </form>
+</div>
+{% endif %}
 {% if noresults > 0 %}
+<p style = "text-align: center;">Click on the column you want sorted</p>
 <table class="table table-responsive">
    <thead>
       <tr>
          <th scope="col">Carpark</th>
-         <th scope="col">Distance</th>
+         <th id = "sortbydist" scope="col" onclick = "sortByDistance()">Distance</th>
+         {% if pricesorted == 1 %}
+         <th scope = "col" id = "sortbyprice" onclick = "sortByPrice()">Price</th>
+         {% endif %}
          <!--       <th scope="col">Weekday Rate 1</th>
             <th scope="col">Weekday Rate 2</th>
             <th scope="col">Saturday Rate</th>
@@ -36,23 +64,22 @@ cursor: pointer;
       </tr>
    </thead>
    <tbody>
+      {% if pricesorted == 0 %}
       {% for x, y in result %}
-      <tr onclick="location.href='/carparkinfo/{{x.id}}/'">
+      <tr name = "content" onclick="location.href='/carparkinfo/{{x.id}}/'">
          <td>{{ x.carParkName }}</td>
          <td>{{y}} km</td>
-         <!-- 			{% if x.weekDaysRate1 == 'null' %}
-            <td>Currently not available</td>
-            <td>Currently not available</td>
-            <td>Currently not available</td>
-            <td>Currently not available</td>
-            {% else %}
-            <td>{{ x.weekDaysRate1 }}</td>
-            <td>{{ x.weekDaysRate2 }}</td>
-            <td>{{ x.satRate }}</td>
-            <td>{{ x.sunRate }}</td>
-            {% endif %} -->
       </tr>
       {% endfor %}
+      {% else %}
+      {% for x, y, z in result %}
+      <tr name = "content" onclick="location.href='/carparkinfo/{{x.id}}/'">
+         <td>{{ x.carParkName }}</td>
+         <td>{{y}} km</td>
+         <td>${{z}}</td>
+      </tr>
+      {% endfor %}   
+      {% endif %}   
    </tbody>
 </table>
 {% else %}
@@ -60,4 +87,49 @@ cursor: pointer;
    <p>Sorry, your search returned no results</p>
    <a href = "{% url 'search' %}"><button class = "btn btn-primary">Go back to search</button></a>
 {% endif %}
+   <button class = "btn btn-primary" onclick = "sortByDistance()">Sort by distance</button>  
+   <script>
+      function validate() {
+         var date = document.getElementById("date");
+         var start = document.getElementById("starttime");
+         var end = document.getElementById("endtime");
+         if (date.value == "" || start.value == "" || end.value == "") {
+            alert("Please fill in all fields before submitting");
+            return false;
+         }
+      }
+
+      function sortByDistance() {
+         var trsparent = document.getElementsByTagName("tbody")[0];
+         var trs = trsparent.children; 
+         console.log(trs[0]);
+         for (var i = 1; i < trs.length; i++) {
+            for (var y = i; y > 0; y--) {
+               if (parseFloat(trs[y].children[1].innerHTML.slice(0, -3)) < parseFloat(trs[y-1].children[1].innerHTML.slice(0, -3))) {
+                  trsparent.insertBefore(trs[y], trs[y].previousElementSibling);
+               } else {
+                  break;
+               }
+         }
+      }
+      console.log(trs[0]);
+      }
+
+      function sortByPrice() {
+         var trsparent = document.getElementsByTagName("tbody")[0];
+         var trs = trsparent.children; 
+         console.log(trs[0]);
+         for (var i = 1; i < trs.length; i++) {
+            for (var y = i; y > 0; y--) {
+               if (parseFloat(trs[y].children[2].innerHTML.slice(1)) < parseFloat(trs[y-1].children[2].innerHTML.slice(1))) {
+                  trsparent.insertBefore(trs[y], trs[y].previousElementSibling);
+               } else {
+                  break;
+               }
+         }
+      }
+      console.log(trs[0]);
+      }
+
+   </script>
 {% endblock %}
