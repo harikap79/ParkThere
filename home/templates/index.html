@@ -12,9 +12,12 @@
   <h2 style="font-size:50px; font-family: 'Lato';">Welcome to ParkThere</h2>
   {% if not user.is_authenticated %}
     <p>Log in or sign up to access more features such as bookmarking carparks</p>
-      <a class = "btn" href = "{% url 'signup' %}" role = "button" style = "background-color: #1a4993; color: #FFF">Sign up</a>
-      <p> Or </p>
-      <a class = "btn" href = "{% url 'login' %}" role = "button" style = "background-color: #1a4993; color: #FFF">Log in</a>   
+      <!--<a class = "btn" href = "{% url 'signup' %}" role = "button" style = "background-color: #1a4993; color: #FFF">Sign up</a>-->
+	  <input type="image" id="myimagesu" style="height:250px;width:250px;" src="/static/home/signup_normal.png" onMouseOver="this.src='/static/home/signup_hover.png'" onMouseOut="this.src='/static/home/signup_normal.png'" onclick="window.location.href='/signup'"/>
+      <!--<p> Or </p>-->
+      <!--<a class = "btn" href = "{% url 'login' %}" role = "button" style = "background-color: #1a4993; color: #FFF">Log in</a>-->
+	  <input type="image" id="myimagel" style="height:250px;width:250px;" src="/static/home/login_normal.png" onMouseOver="this.src='/static/home/login_hover.png'" onMouseOut="this.src='/static/home/login_normal.png'" onclick="window.location.href='/login/login'"/>	  
+	<br />
   {% endif %}
   <p></p>
        
