@@ -31,6 +31,11 @@ background-color: #1c355e;
 }
 {% endblock %}
 {% block body %}
+{% if pricesorted == 1 %}
+<div style = "text-align:center;">
+<p>Date: <b>{{datechosen}}</b>, Time from <b>{{starttime}}</b> to <b> {{endtime}}</b></p>
+</div>
+{% endif %}
 {% if noresults > 0 %}
 {% if pricesorted == 0 %}
 <div style = "text-align:center;" class = "row">

@@ -11,6 +11,9 @@ from . import geocoding
 from random import randint
 
 def ResultsController(request):
+    form = ''
+    start=''
+    end=''
     if request.method == 'POST':
         try:
             form = request.POST['date']
@@ -66,7 +69,7 @@ def ResultsController(request):
             results = zip(results, distances, prices)
         else:
             results = zip(results, distances)
-        return render(request, 'results/ResultsUI.html', {'result' : results, "noresults" : noresults, "userinput" : userinput, "pricesorted" : pricesort, "prices" : prices})
+        return render(request, 'results/ResultsUI.html', {'datechosen':form,'starttime':start,'endtime':end,'result' : results, "noresults" : noresults, "userinput" : userinput, "pricesorted" : pricesort, "prices" : prices})
 
 
     else:
