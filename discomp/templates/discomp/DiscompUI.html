@@ -42,48 +42,120 @@
   </tr>
   <tr>
     <td class="tg-b7b8"><b>Category</b></td>
+    {% if cp1.category != "null" %}
     <td class="tg-b7b8">{{cp1.category}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
+    {% if cp2.category != "null" %}
     <td class="tg-b7b8">{{cp2.category}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-yw4l"><b>Weekdays Rate 1</b></td>
+    {% if cp1.weekDaysRate1 != "null" %}
     <td class="tg-yw4l">{{cp1.weekDaysRate1}}</td>
+    {% else %}
+    <td class="tg-yw4">Information not available</td>
+    {% endif %}
+    {% if cp2.weekDaysRate1 != "null" %}
     <td class="tg-yw4l">{{cp2.weekDaysRate1}}</td>
+    {% else %}
+    <td class="tg-yw4l">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-b7b8"><b>Weekdays Rate 2</b></td>
+    {% if cp1.weekDaysRate2 != "null" %}
     <td class="tg-b7b8">{{cp1.weekDaysRate2}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
+    {% if cp2.weekDaysRate2 != "null" %}
     <td class="tg-b7b8">{{cp2.weekDaysRate2}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-yw4l"><b>Saturday Rate</b></td>
+    {% if cp1.satRate != "null" %}
     <td class="tg-yw4l">{{cp1.satRate}}</td>
+    {% else %}
+    <td class="tg-yw4l">Information not available</td>
+    {% endif %}
+    {% if cp2.satRate != "null" %}
     <td class="tg-yw4l">{{cp2.satRate}}</td>
+    {% else %}
+    <td class="tg-yw4l">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-b7b8"><b>Sunday Rate</b></td>
+    {% if cp1.sunRate != "null" %}
     <td class="tg-b7b8">{{cp1.sunRate}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
+    {% if cp2.sunRate != "null" %}
     <td class="tg-b7b8">{{cp2.sunRate}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-yw4l"><b>Car Park Type</b></td>
+    {% if cp1.carParkType != "null" %}
     <td class="tg-yw4l">{{cp1.carParkType}}</td>
+    {% else %}
+    <td class="tg-yw4l">Information not available</td>
+    {% endif %}
+    {% if cp2.carParkType != "null" %}
     <td class="tg-yw4l">{{cp2.carParkType}}</td>
+    {% else %}
+    <td class="tg-yw4l">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-b7b8"><b>Parking System</b></td>
+    {% if cp1.parkingSystem != "null" %}
     <td class="tg-b7b8">{{cp1.parkingSystem}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
+    {% if cp2.parkingSystem != "null" %}
     <td class="tg-b7b8">{{cp2.parkingSystem}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-yw4l"><b>Free Parking</b></td>
+    {% if cp1.freeParking != "null" %}
     <td class="tg-yw4l">{{cp1.freeParking}}</td>
+    {% else %}
+    <td class="tg-yw4l">Information not available</td>
+    {% endif %}
+    {% if cp2.freeParking != "null" %}
     <td class="tg-yw4l">{{cp2.freeParking}}</td>
+    {% else %}
+    <td class="tg-yw4l">Information not available</td>
+    {% endif %}
   </tr>
   <tr>
     <td class="tg-b7b8"><b>Night Parking</b></td>
+    {% if cp1.nightParking != "null" %}
     <td class="tg-b7b8">{{cp1.nightParking}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
+    {% if cp2.nightParking != "null" %}
     <td class="tg-b7b8">{{cp2.nightParking}}</td>
+    {% else %}
+    <td class="tg-b7b8">Information not available</td>
+    {% endif %}
   </tr>
   <!--<tr>
     <td class="tg-yw4l"><b></b></td>

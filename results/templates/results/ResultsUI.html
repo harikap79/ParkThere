@@ -31,6 +31,7 @@ background-color: #1c355e;
 }
 {% endblock %}
 {% block body %}
+{% if noresults > 0 %}
 {% if pricesorted == 0 %}
 <div style = "text-align:center;" class = "row">
    <form id = "sortPrice" action = "{% url 'results' %}" method = "POST" onsubmit = "return validate()">
@@ -47,7 +48,6 @@ background-color: #1c355e;
    </form>
 </div>
 {% endif %}
-{% if noresults > 0 %}
 <p style = "text-align: center;">Click on the column you want sorted</p>
 <table class="table table-responsive">
    <thead>
@@ -87,7 +87,6 @@ background-color: #1c355e;
    <p>Sorry, your search returned no results</p>
    <a href = "{% url 'search' %}"><button class = "btn btn-primary">Go back to search</button></a>
 {% endif %}
-   <button class = "btn btn-primary" onclick = "sortByDistance()">Sort by distance</button>  
    <script>
       function validate() {
          var date = document.getElementById("date");
