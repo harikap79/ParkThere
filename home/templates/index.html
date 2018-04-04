@@ -7,8 +7,9 @@
 </head>
 <body>
 {% block body %}
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
   <div style = "text-align: center; margin-top: 30px">
-  <h2 style="font-size:50px">Welcome to ParkThere</h2>
+  <h2 style="font-size:50px; font-family: 'Lato';">Welcome to ParkThere</h2>
   {% if not user.is_authenticated %}
     <p>Log in or sign up to access more features such as bookmarking carparks</p>
       <a class = "btn" href = "{% url 'signup' %}" role = "button" style = "background-color: #1a4993; color: #FFF">Sign up</a>
