@@ -112,7 +112,7 @@ def calcPrice(starttime, endtime, cp):
                 price = price + carparkprice.subfifteen
         return price
     else:
-        return randint(0, 10)
+        return (randint(2, 5))/2
 
 
 def convertTime(time):
