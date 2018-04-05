@@ -28,7 +28,12 @@ class UserAdmin(DjangoUserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
 
+class CarParkAdmin(admin.ModelAdmin):
+	search_fields = ('carParkName', 'id',)
+	ordering = ('carParkName',)
+
+
 admin.site.register(CarParkPrice)
-admin.site.register(CarPark)
+admin.site.register(CarPark, CarParkAdmin)
 admin.site.register(SearchHistory)
 # Register your models here.
