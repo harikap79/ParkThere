@@ -42,18 +42,20 @@ background-color: #1c355e;
    <form id = "sortPrice" action = "{% url 'results' %}" method = "POST" onsubmit = "return validate()">
    {% csrf_token %}
    <input type = "hidden" name = "pac-input" value = "{{userinput}}">
-   <p><b>Sort by price</b></p>
+   <p><b>Enter the following to calculate and sort the cost of parking</b></p>
    <p style = "display: inline-block;">Date</p>
    <input id = "date" name = "date" type = "date" style = "display: inline-block;">
    <p style = "display: inline-block;">From</p>
    <input id = "starttime" type = "time" style = "display: inline-block;" name = "starttime" >
    <p style = "display: inline-block;">To</p>
    <input id = "endtime" type = "time" style = "display: inline-block;" name = "endtime" >
-   <button type = "submit" class = "btn btn-primary" style = "display: inline-block;">Sort</button>
+   <button type = "submit" class = "btn btn-primary" style = "display: inline-block;">Calculate</button>
    </form>
 </div>
 {% endif %}
-<p style = "text-align: center;">Click on the column you want sorted</p>
+{% if pricesorted == 1 %}
+<p id = "sort" style = "text-align: center;"><b>Click on the Distance column header to sort it by distance</b></p>
+{% endif %}
 <table class="table table-responsive">
    <thead>
       <tr>
@@ -100,6 +102,10 @@ background-color: #1c355e;
          if (date.value == "" || start.value == "" || end.value == "") {
             alert("Please fill in all fields before submitting");
             return false;
+         } 
+         if (date.value.slice(0, -6).length != 4) {
+         	alert("This website does not support time travellers. Please enter a sensible date.");
+         	return false;
          }
       }
 
@@ -116,7 +122,8 @@ background-color: #1c355e;
                }
          }
       }
-      console.log(trs[0]);
+      var sortdescription = document.getElementById("sort");
+      sortdescription.innerHTML = "<b>Click on the Price column header to sort it by price";
       }
 
       function sortByPrice() {
@@ -133,7 +140,9 @@ background-color: #1c355e;
          }
       }
       console.log(trs[0]);
+      var sortdescription = document.getElementById("sort");
+      sortdescription.innerHTML = "<b>Click on the Distance column header to sort it by distance";
       }
-
+      
    </script>
 {% endblock %}

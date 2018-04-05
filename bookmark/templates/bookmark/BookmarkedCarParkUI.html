@@ -87,7 +87,7 @@ function myFunction(name) {
 	</td><td>
 	<form style='align:left' method="post">
 	{% csrf_token %}
-	<button class="button1" type="submit" onclick="myFunction()"name="chosen" value={{bmc.carPark.id}}>Remove Bookmark</button><br/>
+	<button class="btn btn-secondary" type="submit" onclick="myFunction()"name="chosen" value={{bmc.carPark.id}}>Remove Bookmark</button><br/>
 	</form>
 	</td>
 	</tr>
