@@ -24,9 +24,13 @@ def ComparisonController(request,id=0):
     if request.method == 'POST':
         print('debug comparison POST')
         print('debug pad input: '+request.POST.get('pad-input'))
-        print('debug prev: '+request.POST.get('prev')) 
-        searchResults=searchDB(request.POST.get('pad-input'))
+        print('debug prev: '+request.POST.get('prev'))
         searchTerm=request.POST.get('pad-input')
+        if (searchTerm==''):
+            print('debug empty search request')
+        else:
+            searchResults=searchDB(searchTerm)
+        
         prev=request.POST.get('prev')
         notdone=0
     else:
