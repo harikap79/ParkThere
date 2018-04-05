@@ -37,15 +37,13 @@ background-color: #1c355e;
 </div>
 {% endif %}
 {% if noresults > 0 %}
-<div style = "text-align:center">
-   <p>Your search for {{userinput}} returned {{noresults}} results</p>
-</div>
+
 {% if pricesorted == 0 %}
 <div style = "text-align:center;" class = "row">
    <form id = "sortPrice" action = "{% url 'results' %}" method = "POST" onsubmit = "return validate()">
    {% csrf_token %}
    <input type = "hidden" name = "pac-input" value = "{{userinput}}">
-   <p><b>Enter the following to calculate and sort the cost of parking</b></p>
+   <p><b>Enter the date and time information to calculate and sort the cost of parking</b></p>
    <p style = "display: inline-block;">Date</p>
    <input id = "date" name = "date" type = "date" style = "display: inline-block;">
    <p style = "display: inline-block;">From</p>
@@ -59,6 +57,9 @@ background-color: #1c355e;
 {% if pricesorted == 1 %}
 <p id = "sort" style = "text-align: center;"><b>Click on the Distance column header to sort it by distance</b></p>
 {% endif %}
+<div style = "text-align:left; padding-left:20%">
+   <p>Your search for <b>{{userinput}}</b> returned <b>{{noresults}}</b> results</p>
+</div>
 <table class="table table-responsive">
    <thead>
       <tr>
@@ -94,7 +95,7 @@ background-color: #1c355e;
 </table>
 {% else %}
 <div style = "text-align:center">
-   <p>Sorry, your search for {{userinput}} returned no results</p>
+   <p>Sorry, your search for <b>{{userinput}}</b> returned no results</p>
    <a href = "{% url 'search' %}"><button class = "btn btn-primary">Go back to search</button></a>
 {% endif %}
    <script>

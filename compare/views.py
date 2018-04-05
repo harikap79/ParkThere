@@ -15,10 +15,12 @@ def CompareController(request):
     if request.method == 'POST':
         print('debug compare search request made')
         print('debug '+request.POST.get('pac-input'))
-        
-        searchResults=searchDB(request.POST.get('pac-input'))
         searchTerm=request.POST.get('pac-input')
-        startsearch=1
+        if (searchTerm==''):
+            print('debug empty search')
+        else:
+            searchResults=searchDB(searchTerm)
+            startsearch=1
         return render(request, 'compare/CompareUI.html',{'searchResults':searchResults, 'searchTerm': searchTerm,'startsearch':startsearch})
     else:
     	return render(request, 'compare/CompareUI.html',{'startsearch':startsearch})
