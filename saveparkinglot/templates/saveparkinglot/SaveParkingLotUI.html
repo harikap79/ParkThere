@@ -110,9 +110,10 @@
 <form class = "form-style-6" method="post">
 {% csrf_token %}
 <h1><img id = "icon" src = "/static/home/parkingicon.png"/><br/><br/> Enter your parking lot information</h1>
+<script> var loopcount =0; var qnlist = ['Please input the Car Park name :','Please input the Car Park Lot number :','Please input the Car Park level :','Please input the Car Park zone :'];</script>
 {% for field in form %}
       <div class="form-group">
-        <label style = "text-align: center" for="{{ field.id_for_label }}">{{ field.label }}: </label><br>
+        <label style = "text-align: center" for="{{ field.id_for_label }}"> <script>document.write(qnlist[loopcount++])</script> </label><br>
         {{ field |append_attr:"style:text-align:center;"}}
         {% for error in field.errors %}
           <span class="help-block">{{ error }}</span>

@@ -4,7 +4,7 @@
      /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map{
-        height: 70%;
+        height: 90%;
         width: 60%;
 		margin-left:auto; 
 		margin-right:auto;
@@ -91,7 +91,7 @@
 
 {% block body %}
 	<p style = "text-align: center;"><b>Please search for a location where you want to search for a nearby carpark. Click on Search when you are done.</b></p>
-	<form action = "{% url 'results' %}" method = "POST" style="width:100%; height:100%; text-align: center;" onkeypress="return event.keyCode != 13;">
+	<form action = "{% url 'results' %}" method = "POST" style="width:100%; height:80%; text-align: center;" onkeypress="return event.keyCode != 13;">
 	{% csrf_token %}
     <input id="pac-input" class="controls" type="text" placeholder="Search..." name = "pac-input">
 	<button type = "submit" class = "btn btn-primary">Search</button>

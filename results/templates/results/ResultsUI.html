@@ -37,6 +37,9 @@ background-color: #1c355e;
 </div>
 {% endif %}
 {% if noresults > 0 %}
+<div style = "text-align:center">
+   <p>Your search for {{userinput}} returned {{noresults}} results</p>
+</div>
 {% if pricesorted == 0 %}
 <div style = "text-align:center;" class = "row">
    <form id = "sortPrice" action = "{% url 'results' %}" method = "POST" onsubmit = "return validate()">
@@ -91,7 +94,7 @@ background-color: #1c355e;
 </table>
 {% else %}
 <div style = "text-align:center">
-   <p>Sorry, your search returned no results</p>
+   <p>Sorry, your search for {{userinput}} returned no results</p>
    <a href = "{% url 'search' %}"><button class = "btn btn-primary">Go back to search</button></a>
 {% endif %}
    <script>

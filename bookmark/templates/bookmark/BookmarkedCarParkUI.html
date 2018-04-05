@@ -27,7 +27,7 @@
 	font-family:Arial;
 	font-size:16px;
 	font-weight:bold;
-	width: 400px;
+	width: 600px;
 	height: 40px;
 	text-align:left;
 	padding-left: 10px;
@@ -64,7 +64,7 @@
 }
 </style>
 <script>
-function myFunction(name) {
+function myFunction(carParkName) {
 	
 	alert("Removed!\n\nYou have successfully removed this Car Park from your bookmarks\n");
 	
@@ -76,8 +76,8 @@ function myFunction(name) {
 
 <body>
 <div style = 'text-align: center'>
-<h3> Bookmarked Car Parks Page </h3>
-<table style="width:35%" align='center'" >
+<h3> Bookmarked Car Parks </h3>
+<table style="width:50%" align='center'" >
 	<col align='right'/>
     <col align='left'/>
 {% for bmc in bmcarpark %}
@@ -87,7 +87,7 @@ function myFunction(name) {
 	</td><td>
 	<form style='align:left' method="post">
 	{% csrf_token %}
-	<button class="btn btn-secondary" type="submit" onclick="myFunction()"name="chosen" value={{bmc.carPark.id}}>Remove Bookmark</button><br/>
+	<button class="btn btn-primary" type="submit" onclick="myFunction({{bmc.carPark.id}})"name="chosen" value={{bmc.carPark.id}}>Remove Bookmark</button><br/>
 	</form>
 	</td>
 	</tr>

@@ -3,31 +3,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render
-
-from home.forms import RegistrationForm
 from home.models import User, CarPark, SearchHistory
 
 
-
-def get(self,request): 
-#   form = RegistrationForm()
-#    searchHistory = SearchHistory.objects.all(user=self.User).order_by('-dateTime')[:10]#last ten by this user
-
-   return render(request, 'searchHistory/SearchHistoryUI.html')
-
-def post(self, request): 
-#    form = RegistrationForm(request.CarPark)
-#    if form.is_valid():
-#        searchHistory=form.save(commit=False)
-#        searchHistory.user=request.user
-#        post.save()
-
-#        return redirect('home:home')
-    return render(request, 'searchHistory/SearchHistoryUI.html')
-
-
 def SearchHistoryController(request):
-    rev_history=SearchHistory.objects.filter(user = request.user).order_by('-dateTime')[:15]#order search results in reverse, last ten
+    rev_history=SearchHistory.objects.filter(user = request.user).order_by('-dateTime')[:30]#order search results in reverse, last 30
+    SearchHistory.objects.exclude(pk__in=rev_history).delete() #delete records earlier than last 30 to save space
     #html=''
     #for record in ten_history:
     #   url = '/history/'+str(record.id)+'/'

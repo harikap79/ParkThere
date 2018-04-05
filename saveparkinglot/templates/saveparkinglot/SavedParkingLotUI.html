@@ -17,7 +17,7 @@
 </style>
 </head>
 <div style = 'text-align: center'>
-<h3> Last Saved Parking Lot </h2>
+<h3> Last Saved Parking Lot </h3>
 {% if rechistory|length > 0 %}
 	{% for record in rechistory %}<!--
 	<p><span style = 'text-align: left; color:red'>Carpark Name: </span><span style 'text-align: right'><b>{{record.carParkName}}</b></span></p>
@@ -26,7 +26,7 @@
 	<p><span style = 'text-align: right'>Carpark Lot Number: </span><span style 'text-align: left'><b>{{record.carParkLot}}</b></span></p>
 	<p><span style = 'text-align: right'>Date and Time: </span><span style 'text-align: left'><b>{{record.dateTime}}</b></span></p>
 	-->
-	<table width = 100%>
+	<table width = 100% style='font-family:Arial; font-size:17.5px;'>
                 <tr>
                     <td class="left-column" width=50%>
                         Carpark Name:
