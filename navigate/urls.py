@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 #	url('', views.index, name = 'index'),
-	url(r'^(?P<id>[\d]+)/$', views.navigateController, name = "navigate"),
+	url(r'^(?P<id>[\d]+)/$', views.navigateView, name = "navigate"),
 
 
 ]

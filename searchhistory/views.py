@@ -6,7 +6,7 @@ from django.shortcuts import render
 from home.models import User, CarPark, SearchHistory
 
 
-def SearchHistoryController(request):
+def SearchHistoryView(request):
     rev_history=SearchHistory.objects.filter(user = request.user).order_by('-dateTime')[:30]#order search results in reverse, last 30
     SearchHistory.objects.exclude(pk__in=rev_history).delete() #delete records earlier than last 30 to save space
     #html=''

@@ -6,7 +6,7 @@ from django.db import models
 from home.models import CarPark
 
 
-def CompareController(request):
+def CompareView(request):
     print('debug compare search')
     
     searchResults = 0 #default value so later statement wont complain

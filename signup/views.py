@@ -4,7 +4,7 @@ from home.forms import RegistrationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-def SignUpController(request):
+def SignUpView(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from home.models import RecordedParkingLot
 
 
-def SaveParkingLotController(request):
+def SaveParkingLotView(request):
     print('debug save')
 
     if request.method == 'POST':
@@ -28,7 +28,7 @@ def SaveParkingLotController(request):
     return render(request,'saveparkinglot/SaveParkingLotUI.html',{'form':form})
     
 
-def SavedParkingLotController(request):
+def SavedParkingLotView(request):
     print('debug saved')
     
     rec_history= RecordedParkingLot.objects.filter(user = request.user).order_by('-dateTime')[:1]

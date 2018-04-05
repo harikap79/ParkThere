@@ -4,9 +4,9 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 #	url('', views.index, name = 'index'),
-	url(r'^(?P<id>[\d]+)/$', views.ComparisonController, name = 'comparison'),
+	url(r'^(?P<id>[\d]+)/$', views.ComparisonView, name = 'comparison'),
         #url(r'[\d]+',views.ComparisonController, name = 'comparison'),
-        url(r'',views.ComparisonController,name='comparison')
+        url(r'',views.ComparisonView,name='comparison')
 
 
 ]

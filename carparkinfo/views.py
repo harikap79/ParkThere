@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from home.models import CarPark, SearchHistory,BookmarkedCarPark
 
 
-def CarParkInfoController(request, id):
+def CarParkInfoView(request, id):
         carpark = get_object_or_404(CarPark, id=id)
         anon=1
         if request.method !='POST':

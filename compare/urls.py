@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 #	url('', views.index, name = 'index'),
-	url('', views.CompareController, name = 'compare'),
+	url('', views.CompareView, name = 'compare'),
 
 
 ]

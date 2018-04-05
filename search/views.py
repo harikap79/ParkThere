@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 
-def SearchController(request):
+def SearchView(request):
     return render(request, 'search/SearchUI.html')
 
 # Create your views here.

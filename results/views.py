@@ -10,7 +10,7 @@ from geopy.distance import vincenty
 from . import geocoding
 from random import randint
 
-def ResultsController(request):
+def ResultsView(request):
     form = ''
     start=''
     end=''

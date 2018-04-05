@@ -7,7 +7,7 @@ from django.db.models import Q
 from home.models import CarPark
 
 
-def DisCompController(request):
+def DisCompView(request):
 
     print('debug discomp')
     print('debug url is: '+request.build_absolute_uri())

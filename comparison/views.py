@@ -7,7 +7,7 @@ from django.db.models import Q
 from home.models import CarPark
 
 
-def ComparisonController(request,id=0):
+def ComparisonView(request,id=0):
     carpark = get_object_or_404(CarPark, id=id)
     print('debug comparison')
     searchResults = 0 #default value so later statement wont complain

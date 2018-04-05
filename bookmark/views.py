@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from home.models import BookmarkedCarPark
 
-def BookmarkedCarParkController(request):
+def BookmarkedCarParkView(request):
     bmcarpark=BookmarkedCarPark.objects.filter(user = request.user)
     if request.method == 'POST':
         carparkID=request.POST['chosen']

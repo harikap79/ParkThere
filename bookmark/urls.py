@@ -3,6 +3,6 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-	url('', views.BookmarkedCarParkController, name = 'bookmark'),
+	url('', views.BookmarkedCarParkView, name = 'bookmark'),
 
 ]
