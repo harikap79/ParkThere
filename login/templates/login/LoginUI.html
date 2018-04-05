@@ -101,10 +101,10 @@
       <div class="form-group">
         <label style = "text-align:center" for="{{ field.id_for_label }}">{{ field.label }}: </label><br>
         {{ field |append_attr:"style:text-align:center;"}}
-        {% for error in field.errors %}
-          <span class="help-block">{{ error }}</span>
-        {% endfor %}
       </div>
+    {% endfor %}
+    {% for error in form.errors %}
+          <span class="help-block">Sorry, your login information is incorrect. Please try again</span>
     {% endfor %}
 <input type = "submit" class = "btn" value = "Login"/ >
 </form>
