@@ -60,7 +60,9 @@ function myFunction(name) {
 <body>
 <div style = 'text-align: center'>
 <h3> Recent Search History </h3>
-
+{% if not revhistory %}
+<p><b>You have no search history to display.</b></p>
+{% endif %}
 {% for record in revhistory %}
 <!--<li><a href="/searchHistory/{{record.id}}/">{{record.carParkName}} accessed on {{record.dateTime}}</a></li>-->
 <button class="myButton" onclick="location.href='/carparkinfo/{{record.carPark.id}}/'"><span style="font-size:100%;">{{record.carPark.carParkName}}</span> <span style="float:right;font-size:80%;">last accessed: {{record.dateTime}}</span></button><br/>
