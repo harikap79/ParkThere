@@ -77,12 +77,12 @@ function myFunction(carParkName) {
 <body>
 <div style = 'text-align: center'>
 <h3> Bookmarked Car Parks </h3>
-<table style="width:50% align='center'" >
+<table style="width:50%" align='center' >
 	<col align='right'/>
     <col align='left'/>
 	{% if not bmcarpark %}
-<p><b>You have no bookmarks to display.</b></p>
-{% endif %}
+	<p><b>You have no bookmarks to display.</b></p>
+	{% endif %}
 {% for bmc in bmcarpark %}
 	<tr>
 	<td>
