@@ -14,8 +14,20 @@ if __name__ == "__main__":
     from django.db import models
     from home.models import CarPark
     c = CarPark.objects.all()
-    duplicatesremoved = []
     for carpark in c:
-        dataset = CarPark.objects.filter(carParkName = carpark.carParkName)
-        if (dataset.count() == 3):
-            print(carpark.carParkName)
+        if carpark.freeParking=='nil':
+            carpark.freeParking='No'
+        elif carpark.freeParking=='NO':
+            carpark.freeParking='No'
+        elif carpark.freeParking=='null':
+            carpark.freeParking='No'
+        if carpark.nightParking=='NO':
+            carpark.nightParking='No'
+        elif carpark.nightParking=='YES':
+            carpark.nightParking='Yes'
+        elif carpark.nightParking=='null':
+            carpark.nightParking='No'
+        elif carpark.nightParking=='nil':
+            carpark.nightParking='No'
+        carpark.save()
+        print('carpark '+carpark.carParkName+' saved')
