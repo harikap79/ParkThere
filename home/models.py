@@ -73,7 +73,9 @@ class CarPark(models.Model):
 
 
     def __str__(self):
-        return self.carParkName
+        stringtoreturn = self.carParkName
+        stringtoreturn += ','+str(self.id)
+        return stringtoreturn
 
 class BookmarkedCarPark(models.Model):
     user = models.ForeignKey('User', on_delete = models.CASCADE)
@@ -82,6 +84,7 @@ class BookmarkedCarPark(models.Model):
         stringtoreturn = self.user.email
         stringtoreturn += ":"
         stringtoreturn += self.carPark.carParkName
+        stringtoreturn += str(self.carPark.id)
         return stringtoreturn
 
 class SearchHistory(models.Model):
