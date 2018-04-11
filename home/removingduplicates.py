@@ -13,21 +13,14 @@ if __name__ == "__main__":
     django.setup()
     from django.db import models
     from home.models import CarPark
-    c = CarPark.objects.all()
-    for carpark in c:
-        if carpark.freeParking=='nil':
-            carpark.freeParking='No'
-        elif carpark.freeParking=='NO':
-            carpark.freeParking='No'
-        elif carpark.freeParking=='null':
-            carpark.freeParking='No'
-        if carpark.nightParking=='NO':
-            carpark.nightParking='No'
-        elif carpark.nightParking=='YES':
-            carpark.nightParking='Yes'
-        elif carpark.nightParking=='null':
-            carpark.nightParking='No'
-        elif carpark.nightParking=='nil':
-            carpark.nightParking='No'
-        carpark.save()
-        print('carpark '+carpark.carParkName+' saved')
+    carpark = CarPark.objects.all()
+    for c in carpark:
+        c.category=c.category.replace('&amp;','&')
+        c.weekDaysRate1=c.weekDaysRate1.replace('&amp;','&')
+        c.weekdaysRate2=c.weekDaysRate2.replace('&amp;','&')
+        c.freeParking=c.freeParking.replace('&amp;','&')
+        c.nightParking=c.nightParking.replace('&amp;','&')
+        print(c.carParkName)
+        c.save()
+        
+
