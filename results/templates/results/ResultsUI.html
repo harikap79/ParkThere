@@ -31,6 +31,7 @@ background-color: #1c355e;
 }
 {% endblock %}
 {% block body %}
+{% if insingapore == 1 %}
 {% if pricesorted == 1 %}
 <div style = "text-align:center;">
 <p>Date: <b>{{datechosen}}</b>, Time from <b>{{starttime}}</b> to <b> {{endtime}}</b></p>
@@ -96,6 +97,11 @@ background-color: #1c355e;
 {% else %}
 <div style = "text-align:center">
    <p>Sorry, your search for <b>{{userinput}}</b> returned no results</p>
+   <a href = "{% url 'search' %}"><button class = "btn btn-primary">Go back to search</button></a>
+{% endif %}
+{% else %}
+<div style = "text-align:center">
+   <p>Sorry, you might have entered a location out of Singapore.</p>
    <a href = "{% url 'search' %}"><button class = "btn btn-primary">Go back to search</button></a>
 {% endif %}
    <script>

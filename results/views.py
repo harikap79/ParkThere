@@ -9,6 +9,7 @@ from home.models import CarParkPrice
 from geopy.distance import vincenty
 from . import geocoding
 from random import randint
+from geopy.geocoders import Nominatim
 
 def ResultsView(request):
     form = ''
@@ -24,12 +25,16 @@ def ResultsView(request):
             pricesort = 0
         userinput = str(request.POST['pac-input'])
         usergeocode = geocoding.getGeoCode(userinput)
+        insingapore = 1
         carparks = CarPark.objects.all()
         results = [] 
         distances = []
         prices = []
         for key in carparks:
             distance = (vincenty((usergeocode[0], usergeocode[1]),(key.lat, key.lng)).meters)
+            print(distance)
+            if (distance >= 195000):
+            	insingapore = 0
             if (distance <= 1000):
                 results.append(key)
                 distances.append(format(distance/1000, '.2f'))
@@ -69,7 +74,7 @@ def ResultsView(request):
             results = zip(results, distances, prices)
         else:
             results = zip(results, distances)
-        return render(request, 'results/ResultsUI.html', {'datechosen':form,'starttime':start,'endtime':end,'result' : results, "noresults" : noresults, "userinput" : userinput, "pricesorted" : pricesort, "prices" : prices})
+        return render(request, 'results/ResultsUI.html', {'datechosen':form,'starttime':start,'endtime':end,'result' : results, "noresults" : noresults, "userinput" : userinput, "pricesorted" : pricesort, "prices" : prices, "insingapore" : insingapore})
 
 
     else:
